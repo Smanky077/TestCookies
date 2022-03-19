@@ -1,5 +1,4 @@
-import react,{useState,useEffect, FunctionComponent} from "react";
-import { useApiGet } from "../Api";
+import {FunctionComponent} from "react";
 import Person from "../Models/Person";
 
 type prop={
@@ -20,7 +19,7 @@ export const PersComponent:FunctionComponent<prop>= ({pers,buyCookies,loading,re
     
     const render=()=>{
         if(loading) return <div>Загрузка...</div>
-        return <div style={{display:"flex"}}>
+        return <div style={{display:"flex",justifyContent:'space-around'}}>
             <div style={{paddingRight:"5px",marginTop:'5px'}}>{pers.name}</div>
             <div style={{paddingRight:"5px",marginTop:'5px'}}>Деньги:{pers.money}</div>
             <div style={{paddingRight:"5px",marginTop:'5px'}}>Долг:{pers.alldebit}</div>

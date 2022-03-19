@@ -1,4 +1,3 @@
-import { useEffect ,useState} from 'react';
 import './App.css';
 import {PersonesTable} from './Components/PersonesTabl';
 import Person from "./Models/Person";
@@ -12,7 +11,7 @@ function App() {
       if(loading){
         return <div>Загрузка</div>
       }else{
-        return <div>
+        return <div style={{display:'flex',justifyContent:'center'}}>
         <PersonesTable persones={data} setPers={setData}/>
       </div>
       }

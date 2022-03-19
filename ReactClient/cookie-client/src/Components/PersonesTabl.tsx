@@ -1,7 +1,7 @@
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent,  useState } from "react";
 import Person from "../Models/Person";
 import {PersComponent} from "./PersonesComponent";
-import {useApiGet,http} from '../Api';
+import {http} from '../Api';
 
 
 type prop={
@@ -28,7 +28,7 @@ export const PersonesTable:FunctionComponent<prop>=({persones,setPers})=>{
         const resp = http({method:'PUT',url:"UpdatePersones",data:persones})
         resp.then(r=>{
             console.log('2',r);
-            if(r.data !== null)setPers&&setPers([...r.data]);
+            if(r.data !== null||r.data!=="")setPers&&setPers([...r.data]);
             setLoading(false);
         
         });         
@@ -38,7 +38,9 @@ export const PersonesTable:FunctionComponent<prop>=({persones,setPers})=>{
         setLoading(true);
        const resp = http({method:'POST',url:"ReturnDebs",data:{id:id}})
          resp.then(r=>{
-            if(r.data !== null)setPers&&setPers([...r.data]);
+            if(r.data !== null&&r.data!==''){
+                setPers&&setPers([...r.data]);
+            }
              setLoading(false);
             });   
     }
@@ -46,7 +48,7 @@ export const PersonesTable:FunctionComponent<prop>=({persones,setPers})=>{
         
     
     return (
-    <div style={{border:"2px solid #606060",width:"50%"}}>
+    <div style={{border:"2px solid #606060",width:"1200px"}}>
         {persones.map(item=>{  
             return <PersComponent key={item.id} pers={item} buyCookies={buyCookies} returnDebit={returnDebs} loading={loading}/>   
         })}
