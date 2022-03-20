@@ -2,6 +2,7 @@ import { FunctionComponent,  useState } from "react";
 import Person from "../Models/Person";
 import {PersComponent} from "./PersonesComponent";
 import {http} from '../Api';
+import {InputComponent} from './InputComponent';
 
 
 type prop={
@@ -13,6 +14,7 @@ export const PersonesTable:FunctionComponent<prop>=({persones,setPers})=>{
 
     //const {put,data,loading}= useApiGet<Person[]>('UpdatePersones', false, {}, new Array<Person>(),true);
     const [loading,setLoading] = useState(false);
+    const [price,setPrice] = useState(0);
     const buyCookies=(id:number)=>{
         setLoading(true);
         let pList = persones;
@@ -49,6 +51,7 @@ export const PersonesTable:FunctionComponent<prop>=({persones,setPers})=>{
     
     return (
     <div style={{border:"2px solid #606060",width:"1200px"}}>
+        {/* <InputComponent title={"Цена печенья"} onChange={e=>{setPrice(e.target.valueAsNumber)}}/> */}
         {persones.map(item=>{  
             return <PersComponent key={item.id} pers={item} buyCookies={buyCookies} returnDebit={returnDebs} loading={loading}/>   
         })}

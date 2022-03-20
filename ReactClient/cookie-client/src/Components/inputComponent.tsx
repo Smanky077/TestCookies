@@ -1,9 +1,10 @@
-export const inputComponent = (props: React.InputHTMLAttributes<HTMLInputElement>) => {
+export const InputComponent = (props: React.InputHTMLAttributes<HTMLInputElement>) => {
     return (
-       <div style={{marginTop:"10px"}}>
+       <div style={{margin:"10px",display:'flex'}}>
+          <label >{props.title}</label>
           <input
              maxLength={props.maxLength}
-             type="text"
+             type="number"
              value={props.value}
              onChange={(e) => props.onChange && props.onChange(e)}
           />
