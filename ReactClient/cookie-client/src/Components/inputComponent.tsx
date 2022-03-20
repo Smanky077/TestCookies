@@ -1,7 +1,7 @@
 export const InputComponent = (props: React.InputHTMLAttributes<HTMLInputElement>) => {
     return (
        <div style={{margin:"10px",display:'flex'}}>
-          <label >{props.title}</label>
+          <label style={{marginRight:'5px'}}>{props.title}</label>
           <input
              maxLength={props.maxLength}
              type="number"
